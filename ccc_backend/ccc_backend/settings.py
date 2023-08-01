@@ -78,6 +78,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN'),
+        'http://localhost:3000',
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
+
 ROOT_URLCONF = 'ccc_backend.urls'
 
 TEMPLATES = [
