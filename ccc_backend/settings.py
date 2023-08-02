@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'dj_rest_auth.registration',
+    'recipes',
 ]
 
 SITE_ID = 1
