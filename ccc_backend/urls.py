@@ -46,4 +46,6 @@ urlpatterns = [
         'dj-rest-auth/registration', include('dj_rest_auth.registration.urls')
         ),
     path('', include('recipes.urls')),
+    path('', include('favourites.urls')),
+
 ]
