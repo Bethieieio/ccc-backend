@@ -13,8 +13,9 @@ class RecipeList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-class RecipeDetails(generics.RetrieveDestroyAPIView):
+class RecipeDetails(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RecipeSerializer
     permission_classes = [
         IsOwnerOrReadOnly
     ]
+    queryset = Recipe.objects.all()

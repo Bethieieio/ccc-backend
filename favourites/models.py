@@ -8,8 +8,8 @@ class Favourite(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['-created_at']
-
+        unique_together = ['owner', 'recipe']
+        
     def __str__(self):
         return f"{self.owner}'s favourite"
     

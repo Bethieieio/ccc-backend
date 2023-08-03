@@ -14,8 +14,8 @@ class FavouriteList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 class FavouriteDetails(generics.RetrieveDestroyAPIView):
+    queryset = Favourite.objects.all()
     serializer_class = FavouriteSerializer
     permission_classes = [
         IsOwnerOrReadOnly
     ]
-
