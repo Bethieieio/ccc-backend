@@ -47,5 +47,6 @@ urlpatterns = [
         ),
     path('', include('recipes.urls')),
     path('', include('favourites.urls')),
+    path('', include('ratings.urls')),
 
 ]
