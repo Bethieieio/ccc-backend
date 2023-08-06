@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 class Recipe(models.Model):
@@ -19,9 +18,3 @@ class Recipe(models.Model):
 
     def __str__(self):
         return f"{self.owner}'s recipe"
-
-def create_recipe(instance, created, **kwargs):
-    if created:
-        Recipe.objects.create(owner=instance)
-
-post_save.connect(create_recipe, sender=User)
