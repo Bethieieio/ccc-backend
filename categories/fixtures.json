@@ -1,0 +1,24 @@
+
+[
+  {
+    "model": "categories.Category",
+    "pk": 1,
+    "fields": {
+      "name": "Cakes"
+    }
+  },
+  {
+    "model": "categories.Category",
+    "pk": 2,
+    "fields": {
+      "name": "Cookies"
+    }
+  },
+  {
+    "model": "categories.Category",
+    "pk": 3,
+    "fields": {
+      "name": "Crumbles"
+    }
+  }
+]

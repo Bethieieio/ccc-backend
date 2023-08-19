@@ -1,10 +1,12 @@
 from rest_framework import serializers
+from categories.serializers import CategorySerializer
 from .models import Recipe
 
 
 class RecipeSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
+    categories = CategorySerializer(many=True)
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -30,12 +32,5 @@ class RecipeSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner',
             'created_at', 'updated_at',
             'title', 'description', 'image', 
-            'ingredients', 'instructions'
+            'ingredients', 'instructions', 'categories',
         ]
-
-
-
-
-
-
-
