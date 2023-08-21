@@ -1,12 +1,30 @@
 from rest_framework import serializers
 from categories.serializers import CategorySerializer
+from categories.models import Category
 from .models import Recipe
+import json
 
 
 class RecipeSerializer(serializers.ModelSerializer):
+
+    # def to_internal_value(self, data):
+    #     data._mutable = True
+    #     data['categories'] = json.loads(data['categories'])
+    #     print(data['categories'][0])
+    #     print(type(data['categories'][0]))
+    #     return super().to_internal_value(data)
+
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     categories = CategorySerializer(many=True)
+
+    def validate_empty_values(self, data):
+        print(data)
+        return super().validate_empty_values(data)
+
+    def validate_categories(self, value):
+        print('validate categories')
+        print(value)
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -25,7 +43,6 @@ class RecipeSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-
     class Meta:
         model = Recipe
         fields = [
@@ -34,3 +51,29 @@ class RecipeSerializer(serializers.ModelSerializer):
             'title', 'description', 'image', 
             'ingredients', 'instructions', 'categories',
         ]
+
+    def update(self, instance, validated_data):
+        categories = validated_data.pop('categories')
+        print(categories)
+        instance = super(RecipeSerializer, self).update(instance, validated_data)
+
+        for cat in categories:
+            catqs = Category.objects.get(name=cat['name'])
+
+            if catqs:
+                instance.categories.add(catqs)
+
+        return instance
+
+    def create(self, instance, validated_data):
+        categories = validated_data.pop('categories')
+        print(categories)
+        instance = super(RecipeSerializer, self).create(validated_data)
+
+        for cat in categories:
+            catqs = Category.objects.get(name=cat['name'])
+
+            if catqs:
+                instance.categories.add(catqs)
+
+        return instance
