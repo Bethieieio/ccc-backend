@@ -14,7 +14,6 @@ class Recipe(models.Model):
         upload_to='images/', default='../default_recipe_image', blank=True
     )
     categories = models.ManyToManyField(Category)
-
     class Meta:
         ordering = ['-created_at']
 

@@ -2,7 +2,7 @@ from rest_framework import serializers
 from categories.serializers import CategorySerializer
 from categories.models import Category
 from .models import Recipe
-import json
+from favourites.serializers import FavouriteSerializer
 
 
 class RecipeSerializer(serializers.ModelSerializer):
@@ -17,6 +17,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     categories = CategorySerializer(many=True)
+    favourites = FavouriteSerializer(read_only=True, many=True)
 
     def validate_empty_values(self, data):
         print(data)
@@ -49,7 +50,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner',
             'created_at', 'updated_at',
             'title', 'description', 'image', 
-            'ingredients', 'instructions', 'categories',
+            'ingredients', 'instructions', 'categories', 'favourites',
         ]
 
     def update(self, instance, validated_data):
