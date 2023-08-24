@@ -6,26 +6,13 @@ from favourites.serializers import FavouriteSerializer
 
 
 class RecipeSerializer(serializers.ModelSerializer):
-
-    # def to_internal_value(self, data):
-    #     data._mutable = True
-    #     data['categories'] = json.loads(data['categories'])
-    #     print(data['categories'][0])
-    #     print(type(data['categories'][0]))
-    #     return super().to_internal_value(data)
-
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    categories = CategorySerializer(many=True)
+    categories = CategorySerializer(many=True, read_only=True)
     favourites = FavouriteSerializer(read_only=True, many=True)
 
     def validate_empty_values(self, data):
-        print(data)
         return super().validate_empty_values(data)
-
-    def validate_categories(self, value):
-        print('validate categories')
-        print(value)
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -52,29 +39,3 @@ class RecipeSerializer(serializers.ModelSerializer):
             'title', 'description', 'image', 
             'ingredients', 'instructions', 'categories', 'favourites',
         ]
-
-    def update(self, instance, validated_data):
-        categories = validated_data.pop('categories')
-        print(categories)
-        instance = super(RecipeSerializer, self).update(instance, validated_data)
-
-        for cat in categories:
-            catqs = Category.objects.get(name=cat['name'])
-
-            if catqs:
-                instance.categories.add(catqs)
-
-        return instance
-
-    def create(self, instance, validated_data):
-        categories = validated_data.pop('categories')
-        print(categories)
-        instance = super(RecipeSerializer, self).create(validated_data)
-
-        for cat in categories:
-            catqs = Category.objects.get(name=cat['name'])
-
-            if catqs:
-                instance.categories.add(catqs)
-
-        return instance
