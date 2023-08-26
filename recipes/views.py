@@ -5,9 +5,10 @@ from .models import Recipe
 from categories.models import Category
 import json
 from rest_framework.response import Response
-
+from .filters import RecipeFilter
 
 class RecipeList(generics.ListCreateAPIView):
+    filterset_class = RecipeFilter
     serializer_class = RecipeSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
