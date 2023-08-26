@@ -1,8 +1,10 @@
+"""recipe model file"""
 from django.db import models
 from django.contrib.auth.models import User
 from categories.models import Category
 
 class Recipe(models.Model):
+    """recipe model class for recipe """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -15,6 +17,7 @@ class Recipe(models.Model):
     )
     categories = models.ManyToManyField(Category)
     class Meta:
+        """meta class"""
         ordering = ['-created_at']
 
     def __str__(self):

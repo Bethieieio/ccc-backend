@@ -1,3 +1,4 @@
+"""my setting files with env's"""
 from pathlib import Path
 import os
 import dj_database_url
@@ -22,6 +23,7 @@ REST_FRAMEWORK = {
         'rest_framework.pagination.PageNumberPagination',
         'PAGE_SIZE': 10,
         'DATETIME_FORMAT': '%d %b %Y',
+    "DEFAULT_FILTER_BACKENDS": ( "django_filters.rest_framework.DjangoFilterBackend", ),
 }
 
 if 'DEV' not in os.environ:

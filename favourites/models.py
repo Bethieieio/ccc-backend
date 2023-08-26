@@ -11,7 +11,8 @@ class Favourite(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='favourites')
 
     class Meta:
+        """meta class"""
         unique_together = ['owner', 'recipe']
-        
+
     def __str__(self):
         return f"{self.owner}'s favourite"

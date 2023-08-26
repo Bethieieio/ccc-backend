@@ -1,13 +1,16 @@
+"""recipe list..."""
+import json
 from rest_framework import generics, permissions
+from rest_framework.response import Response
 from ccc_backend.permissions import IsOwnerOrReadOnly
+from categories.models import Category
+from .filters import RecipeFilter
 from .serializers import RecipeSerializer
 from .models import Recipe
-from categories.models import Category
-import json
-from rest_framework.response import Response
-from .filters import RecipeFilter
+
 
 class RecipeList(generics.ListCreateAPIView):
+    """recipe list and create API views"""
     filterset_class = RecipeFilter
     serializer_class = RecipeSerializer
     permission_classes = [
@@ -35,6 +38,7 @@ class RecipeList(generics.ListCreateAPIView):
         return serializer.save(owner=self.request.user)
 
 class RecipeDetails(generics.RetrieveUpdateDestroyAPIView):
+    """recipe update and delete API views"""
     serializer_class = RecipeSerializer
     permission_classes = [
         IsOwnerOrReadOnly
