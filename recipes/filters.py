@@ -11,6 +11,18 @@ class RecipeFilter(django_filters.FilterSet):
         lookup_expr='contains',
         queryset=Category.objects.all(),
     )
+    isOwner = django_filters.BooleanFilter(
+        field_name='recipe__owner',
+        method="filter_is_owner",
+        label="Is Owner",
+    )
+
+    def filter_is_owner(self, queryset, name, value):
+        """Filter by current signed in user"""
+        if value:
+            user = self.request.user
+            return queryset.filter(owner=user.id).distinct()
+        return queryset
 
     class Meta:
         """meta data fpr recipe filters"""
