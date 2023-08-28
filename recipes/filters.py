@@ -16,9 +16,21 @@ class RecipeFilter(django_filters.FilterSet):
         method="filter_is_owner",
         label="Is Owner",
     )
+    isFavourited = django_filters.BooleanFilter(
+        field_name="recipe__favourite",
+        method="filter_is_favourite",
+        label="Is Favourited",
+    )
 
     def filter_is_owner(self, queryset, name, value):
         """Filter by current signed in user"""
+        if value:
+            user = self.request.user
+            return queryset.filter(owner=user.id).distinct()
+        return queryset
+
+    def filter_is_favourite(self, queryset, name, value):
+        """Filter favourited recipes"""
         if value:
             user = self.request.user
             return queryset.filter(owner=user.id).distinct()
