@@ -33,7 +33,7 @@ class RecipeFilter(django_filters.FilterSet):
         """Filter favourited recipes"""
         if value:
             user = self.request.user
-            return queryset.filter(owner=user.id).distinct()
+            return queryset.filter(favourites__owner=user.id).distinct()
         return queryset
 
     class Meta:
