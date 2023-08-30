@@ -50,10 +50,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'https://cakes-cookies-crumbles-c12827854ad0.herokuapp.com/',
+    'cakes-cookies-crumbles-c12827854ad0.herokuapp.com',
     '127.0.0.1',
 ]
-
 
 # Application definition
 
