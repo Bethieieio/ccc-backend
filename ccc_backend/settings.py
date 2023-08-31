@@ -51,6 +51,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     'localhost',
     'cakes-cookies-crumbles-c12827854ad0.herokuapp.com',
+    'bethieieio.github.io/CakesCookiesCrumbles',
     '127.0.0.1',
 ]
 
