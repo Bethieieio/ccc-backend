@@ -16,6 +16,16 @@ To run the application locally, I used the below command to start the server in 
 $ python3 manage.py runserver
 ```
 
+## Linting
+I installed a PyLint extention for VSCode that listed problems with linting. I then had to fix manually.
+See below for examples of pylinting issues that I have fixed.
+![image](assets/readme-images/readme-linting.png)
+![image](assets/readme-images/readme-linting2.png)
+
+The image below shows some issues that I couldn't fix.
+![image](assets/readme-images/readme-linting3.png)
+
+
 ## Testing
 
 ### Create Recipe
