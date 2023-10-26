@@ -27,8 +27,13 @@ The image below shows some issues that I couldn't fix.
 
 
 ## Testing
-
 ### Create Recipe
+I made an API request on the recipes end point and this returned back a 400 bad request. This is because there are validation errors. In the example below, you can see the errors from the server.
+![image](assets/readme-images/reademe-tesing-validation-error.png)  
+
+I made an API request on the recipes end point and this returned back a 201 success. In the response is my recipe in JSON
+![image](assets/readme-images/readme-testing-create-recipe.png)
+
 
 ### Edit Recipe
 ### Delete Recipe
