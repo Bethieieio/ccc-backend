@@ -36,8 +36,13 @@ I made an API request on the recipes end point and this returned back a 201 succ
 
 
 ### Edit Recipe
-### Delete Recipe
+I made a PUT API request to the recipes/29/ end point where 29 is the ID of the created test recipe from the last example.
+It has returned back a 200 and make a note that I have changed the ingredients from "milk" to "custard and bread crumbs".
+![image](assets/readme-images/readme-testing-edit-recipe.png)
 
+### Delete Recipe
+I made a DELETE API request on the recipes end point and this returned back a  204 no content. This means that the recipe I created, was deleted sucessfully.
+![image](assets/readme-images/readme-testing-delete-recipe.png)
 ### Favourite Recipe        
 ### Paginate Recipe
 I made an API request to the recipes end point and this returned back a paginated result where I had a count property for the total amount of recipes, next and previous properties for next and previous page URLS and a results property for the array of recipes. 
