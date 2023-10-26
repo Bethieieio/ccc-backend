@@ -32,7 +32,7 @@ I made an API request on the recipes end point and this returned back a 400 bad 
 ![image](assets/readme-images/reademe-tesing-validation-error.png)  
 
 I made an API request on the recipes end point and this returned back a 201 success. In the response is my recipe in JSON
-![image](assets/readme-images/readme-testing-create-recipe.png)
+![image](assets/readme-images/readme-testing-create-recipe-success.png)
 
 
 ### Edit Recipe
