@@ -95,7 +95,6 @@ I tried to make the same request as above but received a 400 response because I 
 3. I then used the git clone command to clone to my local machine.
 ![image](assets/readme-images/clone_link_readme.png)<br>
 
-
 This is how I deployed the backend of this site to Heroku
 4. I Created a new app on Heroku
 ![image](assets/readme-images/deploy-to-heroku1.png)<br>
