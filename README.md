@@ -88,7 +88,7 @@ I tried to make the same request as above but received a 400 response because I 
 ![image](assets/readme-images/backend-testing-rating-duplicate.png)
 
 ## Deployment to Heroku 
-1. First, I clone the repository from GitHub.
+1. First, I cloned the repository from GitHub.
 ![image](assets/readme-images/clone_backend_readme.png)<br>
 2. Then I copied the SSH link.
 ![image](assets/readme-images/copied-readme.png)<br>
