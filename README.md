@@ -6,6 +6,7 @@
 - [**Local Development**](#local-development)
 - [**Linting**](#linting)
 - [**Testing**](#testing)
+- [**Deployment to Heroku**](#deployment-to-heroku)
 
 
 
@@ -86,4 +87,29 @@ I tried to make the same request as above but received a 400 response because I 
 
 ![image](assets/readme-images/backend-testing-rating-duplicate.png)
 
+## Deployment to Heroku 
+1. First, I clone the repository from GitHub.
+![image](assets/readme-images/clone_backend_readme.png)<br>
+2. Then I copied the SSH link.
+![image](assets/readme-images/copied-readme.png)<br>
+3. I then used the git clone command to clone to my local machine.
+![image](assets/readme-images/clone_link_readme.png)<br>
 
+
+This is how I deployed the backend of this site to Heroku
+4. I Created a new app on Heroku
+![image](assets/readme-images/deploy-to-heroku1.png)<br>
+5. I gave the app a unique name and chosen the region where I am from.
+![image](assets/readme-images/deploy-to-heroku2.png)<br>
+6. I then linked my Github backend repository to Heroku.
+![image](assets/readme-images/deploy-to-heroku3.png)<br>
+7. I then inputted all the necessary config vars to Heroku.
+![image](assets/readme-images/deploy-to-heroku4.png)<br>
+8. I input the Python buildback.
+![image](assets/readme-images/deploy-to-heroku5.png)<br>
+9. I created the Procfile that so Heroku knows what profile to run? 
+![image](assets/readme-images/deploy-to-heroku6.png)<br>
+10. I chosen to deploy the main branch.
+![image](assets/readme-images/deploy-to-heroku7.png)<br>
+11. I added the Heroku app host to my origins for CORS.
+![image](assets/readme-images/deploy-to-heroku8.png)<br>
