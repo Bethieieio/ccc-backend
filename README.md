@@ -4,12 +4,28 @@
 
 - [**Model Relationship Diagram**](#model-relationship-diagram)
 - [**Local Development**](#local-development)
-- [**Local Development**](#testing)
+- [**Linting**](#linting)
+- [**Testing**](#testing)
+
+
 
 
 ## Model Relationship Diagram
 This is a diagram I created on what the relationship looks like between the models on my backend.
 ![image](assets/readme-images/model-relationship-diagram.png)
+
+### User
+This table is supplied by Django it is used to hold user information such as email address and password.
+The userID will be used to create relations on models that the user owns. 
+### Recipes
+This model stores the recipe information such as the title, ingredients and instructions etc. The recipe will belong to a user.
+### Categories
+This model stores the filter categories that help the user find a specific recipe that they desire. (Cakes, Cookies and Categories). The user can assign more than one category to a recipe.
+### Ratings
+Ratings has a relation to the user and the recipe and has the value for the recipe's rating (1-5).
+This is later used to calculate the recipes average rating.
+### Favourites
+This is used to mark a specific recipes as favourited by the user this is so the user can find their favourites using the relationship.
 ## Local Development
 To run the application locally, I used the below command to start the server in the terminal.
 ```
